@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #050505;
+  --color-coal: #0e0e0e;
+  --color-gold: #c5a059;
+  --color-gold-light: #ecd08f;
+  --color-cream: #f3ead8;
+  --font-sans: var(--font-poppins);
+  --font-serif: var(--font-playfair);
+  --font-display: var(--font-cinzel);
+}
+
+html { background: #050505; color: #f3ead8; }
+body { background: #050505; }
+::selection { background: #c5a059; color: #050505; }
+
+.text-gold-shine {
+  background: linear-gradient(90deg, #8a6a2f, #f6dfa1, #c5a059, #fff3cf, #8a6a2f);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 5s linear infinite;
+}
+@keyframes shine { to { background-position: 200% center; } }
+
+.btn-gold {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3 text-xs tracking-[0.3em] uppercase font-medium text-ink transition-all duration-300 disabled:opacity-50;
+  background: linear-gradient(135deg, #a8823d, #ecd08f 50%, #a8823d);
+  background-size: 200% 100%;
+}
+.btn-gold:hover { background-position: 100% 0; box-shadow: 0 0 30px rgba(197,160,89,.35); }
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3 text-xs tracking-[0.3em] uppercase border border-gold/50 text-gold-light transition hover:bg-gold/10 hover:border-gold;
+}
+.field {
+  @apply w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-cream placeholder:text-white/30 outline-none focus:border-gold/70 transition;
+}
+.label { @apply block text-[10px] tracking-[0.3em] uppercase text-gold/80 mb-2; }
+.card { @apply border border-white/[0.07] bg-gradient-to-b from-white/[0.035] to-transparent; }
+.eyebrow { @apply text-[10px] tracking-[0.5em] uppercase text-gold; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+:focus-visible { outline: 1px solid #c5a059; outline-offset: 3px; }
